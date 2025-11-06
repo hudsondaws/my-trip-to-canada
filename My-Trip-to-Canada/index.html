@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Trip to Canada</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #222;
+      margin: 0;
+    }
+    header {
+      background-color: #d32f2f;
+      color: white;
+      text-align: center;
+      padding: 1.2em 0;
+    }
+    nav {
+      background-color: #b71c1c;
+      text-align: center;
+      padding: 0.5em;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      text-align: center;
+      padding: 2em;
+    }
+    audio {
+      margin-top: 20px;
+      border: 2px solid #b71c1c;
+      border-radius: 8px;
+      background-color: #fff0f0;
+      padding: 5px;
+    }
+    footer {
+      background-color: #d32f2f;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Trip to Canada</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Gallery</a>
+  </nav>
+
+  <main>
+    <h2>Welcome!</h2>
+    <p>Join me as I share my incredible journey through Jasper and Banff — two of the most breathtaking places in Canada!</p>
+
+    <h3>🎵 Listen: “Canada (You’re a Lifetime Journey)”</h3>
+    <audio id="canadaSong" autoplay muted>
+      <source src="https://ia800107.us.archive.org/29/items/EpcotCenterMusic/CircleVision%20-%20Canada%20Youre%20a%20Lifetime%20Journey.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </main>
+
+  <footer>
+    <p>© 2025 My Trip to Canada</p>
+  </footer>
+
+  <script>
+    // Fade-in audio playback
+    const song = document.getElementById('canadaSong');
+
+    // Wait for audio to start playing
+    song.volume = 0; // start silent
+    let vol = 0;
+    const fadeIn = setInterval(() => {
+      if (vol < 1) {
+        vol += 0.05;  // increase volume slowly
+        song.volume = vol;
+      } else {
+        clearInterval(fadeIn);
+      }
+    }, 200); // every 0.2 seconds
+
+    // Unmute after 2 seconds (helps bypass autoplay restrictions)
+    setTimeout(() => {
+      song.muted = false;
+      song.play().catch(() => {
+        console.log("Autoplay may be blocked until user interacts.");
+      });
+    }, 2000);
+  </script>
+</body>
+</html>
